@@ -2,12 +2,12 @@ package br.com.bruno.locadora.controller;
 
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.bruno.locadora.modelo.Pedido;
 
-@Controller
+@RestController
 public class PedidoController {
 	
 	@RequestMapping("/pedidos")

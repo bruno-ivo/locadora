@@ -15,10 +15,17 @@ public class Cliente {
 	private Long id;
 	private String nome;
 	
-	public Cliente(){
-		
+	public Cliente(){		
 	}
 	
+	
+	
+	public Cliente(String nome) {
+		this.nome = nome;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}

@@ -3,11 +3,15 @@ package br.com.bruno.locadora.modelo;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "filmes")
 public class Filme {
 	
 	@Id
@@ -16,9 +20,19 @@ public class Filme {
 	private String nomeDoFilme;
 	private BigDecimal valor;
 	
+	@Enumerated(EnumType.STRING)
 	private TipoDeMidia tipo;
 	
 	
+	public Filme() {
+	}
+	
+	public Filme(String nomeDoFilme, BigDecimal valor, TipoDeMidia tipo) {
+		super();
+		this.nomeDoFilme = nomeDoFilme;
+		this.valor = valor;
+		this.tipo = tipo;
+	}
 	public TipoDeMidia getTipo() {
 		return tipo;
 	}
@@ -44,8 +58,10 @@ public class Filme {
 		this.valor = valor;
 	}
 	
-	
-	
+	@Override
+	public String toString() {
+		return "Filme [Titulo : " + nomeDoFilme + ", valor = " + valor + ", tipo = " + tipo + "]";
+	}	
 	
 
 }
