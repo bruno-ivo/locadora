@@ -2,7 +2,7 @@ package br.com.bruno.locadora.modelo;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -16,9 +16,9 @@ public class Pedido {
 	@ManyToOne
 	private Cliente cliente;
 
-	private Date dataDeLocacao;
+	private LocalDate dataDeLocacao = LocalDate.now();
 
-	private Date dataDeDevolucao;
+	private LocalDate dataDeDevolucao = LocalDate.now().plusDays(5);
 
 	private BigDecimal valorTotal;
 
@@ -42,19 +42,19 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 
-	public Date getDataDeLocacao() {
+	public LocalDate getDataDeLocacao() {
 		return dataDeLocacao;
 	}
 
-	public void setDataDeLocacao(Date dataDeLocacao) {
+	public void setDataDeLocacao(LocalDate dataDeLocacao) {
 		this.dataDeLocacao = dataDeLocacao;
 	}
 
-	public Date getDataDeDevolucao() {
+	public LocalDate getDataDeDevolucao() {
 		return dataDeDevolucao;
 	}
 
-	public void setDataDeDevolucao(Date dataDeDevolucao) {
+	public void setDataDeDevolucao(LocalDate dataDeDevolucao) {
 		this.dataDeDevolucao = dataDeDevolucao;
 	}
 
@@ -70,7 +70,5 @@ public class Pedido {
 		return valorTotal;
 	}
 
-	public void setValorTotal(BigDecimal valorTotal) {
-		this.valorTotal = valorTotal;
-	}
+	public void setValorTotal(BigDecimal valorTotal) {this.valorTotal = valorTotal;}
 }

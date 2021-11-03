@@ -11,7 +11,7 @@ public class FilmeDto {
 	private Long id;
 	private String nomeDoFilme;	
 	private String tipo;
-	private  String codigo;
+	private String codigo;
 	private BigDecimal valorDoFilme;
 
 

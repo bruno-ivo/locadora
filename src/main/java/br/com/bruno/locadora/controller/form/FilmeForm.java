@@ -58,7 +58,7 @@ public class FilmeForm {
 
 
     public Filme atualizar(long id, FilmeRepository filmeRepository) {
-		Filme f = new Filme();
+		Filme f = filmeRepository.getById(id);
 		f.setNomeDoFilme(this.nomeDoFilme);
 		f.setCodigoDoFilme(this.codigo);
 		f.setTipo(TipoDeMidiaEnum.valueOf(tipo));
