@@ -1,6 +1,7 @@
 package br.com.bruno.locadora.modelo;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "itemPedido")
@@ -9,15 +10,19 @@ public class ItemPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int quantidade;
+
+    @ManyToOne
+    private Pedido pedido;
+
+    private Integer quantidade;
 
     @ManyToOne
     private Filme filme;
 
+    private BigDecimal valorTotal;
 
 
-    @ManyToOne
-    private Pedido pedido;
+
 
     public Long getId() {
         return id;
@@ -27,11 +32,11 @@ public class ItemPedido {
         this.id = id;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -49,5 +54,13 @@ public class ItemPedido {
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
     }
 }

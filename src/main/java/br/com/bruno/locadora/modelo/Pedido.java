@@ -1,5 +1,8 @@
 package br.com.bruno.locadora.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "pedidos")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Pedido {
 	
 	@Id
@@ -16,9 +20,9 @@ public class Pedido {
 	@ManyToOne
 	private Cliente cliente;
 
-	private LocalDate dataDeLocacao = LocalDate.now();
+	private LocalDate dataDeLocacao ;
 
-	private LocalDate dataDeDevolucao = LocalDate.now().plusDays(5);
+	private LocalDate dataDeDevolucao ;
 
 	private BigDecimal valorTotal;
 

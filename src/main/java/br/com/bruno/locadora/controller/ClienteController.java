@@ -39,13 +39,13 @@ public class ClienteController {
 		Cliente cliente = form.converter();
 		clienteRepository.save(cliente);
 
-		//O uri gera um codigo 201(Conteudo criado), ao inves de cogdigo 200
+		//O uri gera um codigo 201(Conteudo criado), ao inves de codigo 200
 		URI uri = uriBuilder.path("/clientes/{id}").buildAndExpand(cliente.getId()).toUri();
 		return ResponseEntity.created(uri).body(new ClienteDto(cliente));
 	}
 
 	@PutMapping("/{id}")
-	@Transactional  //Avisa para o sprint que é para dar commit no metodo
+	@Transactional  //Avisa para o spring que é para dar commit no metodo
 	public ResponseEntity<ClienteDto> atualizarCliente (@PathVariable Long id,@RequestBody ClienteForm form){
 		Optional<Cliente> c = clienteRepository.findById(id);
 		if (c.isPresent()){
