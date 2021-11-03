@@ -1,14 +1,7 @@
 package br.com.bruno.locadora.modelo;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
-
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "filmes")
@@ -17,50 +10,61 @@ public class Filme {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	private String codigoDoFilme;
 	private String nomeDoFilme;
-	private BigDecimal valor;
+
 	
 	@Enumerated(EnumType.STRING)
-	private TipoDeMidia tipo;
-	
-	
-	public Filme() {
+	private TipoDeMidiaEnum tipo;
+
+	private BigDecimal valorUnitarioDoFilme;
+
+
+	public BigDecimal getValorUnitarioDoFilme() {
+		return valorUnitarioDoFilme;
 	}
-	
-	public Filme(String nomeDoFilme, BigDecimal valor, TipoDeMidia tipo) {
-		super();
-		this.nomeDoFilme = nomeDoFilme;
-		this.valor = valor;
-		this.tipo = tipo;
+
+	public void setValorUnitarioDoFilme(BigDecimal valorUnitarioDoFilme) {
+		this.valorUnitarioDoFilme = valorUnitarioDoFilme;
 	}
-	public TipoDeMidia getTipo() {
-		return tipo;
-	}
-	public void setTipo(TipoDeMidia tipo) {
-		this.tipo = tipo;
-	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getCodigoDoFilme() {
+		return codigoDoFilme;
+	}
+
+	public void setCodigoDoFilme(String codigo) {
+		this.codigoDoFilme = codigo;
+	}
+
 	public String getNomeDoFilme() {
 		return nomeDoFilme;
 	}
+
 	public void setNomeDoFilme(String nomeDoFilme) {
 		this.nomeDoFilme = nomeDoFilme;
 	}
-	public BigDecimal getValor() {
-		return valor;
+
+
+	public TipoDeMidiaEnum getTipo() {
+		return tipo;
 	}
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+
+	public void setTipo(TipoDeMidiaEnum tipo) {
+		this.tipo = tipo;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Filme [Titulo : " + nomeDoFilme + ", valor = " + valor + ", tipo = " + tipo + "]";
+		return "Filme [Titulo : " + nomeDoFilme +  ", tipo = " + tipo + "]";
 	}	
 	
 

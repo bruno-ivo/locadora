@@ -14,17 +14,16 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	
-	public Cliente(){		
-	}
-	
-	
-	
-	public Cliente(String nome) {
-		this.nome = nome;
+
+	private String codigoDoCLiente;
+
+	public String getCodigoDoCLiente() {
+		return codigoDoCLiente;
 	}
 
-
+	public void setCodigoDoCLiente(String codigo) {
+		this.codigoDoCLiente = codigo;
+	}
 
 	public Long getId() {
 		return id;
@@ -41,7 +40,7 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-		return "Cliente [Matricula : " + id + "] " + ", [Nome: " + nome + "]";
+		return "Cliente [Matricula : " + codigoDoCLiente + "] " + ", [Nome: " + nome + "]";
 	}
 	
 	

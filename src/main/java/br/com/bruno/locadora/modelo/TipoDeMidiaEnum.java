@@ -1,6 +1,6 @@
 package br.com.bruno.locadora.modelo;
 
-public enum TipoDeMidia {
+public enum TipoDeMidiaEnum {
 	
 	VHS,
 	DVD

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.bruno.locadora.modelo.Filme;
-import br.com.bruno.locadora.modelo.TipoDeMidia;
+import br.com.bruno.locadora.modelo.TipoDeMidiaEnum;
 import br.com.bruno.locadora.repository.FilmeRepository;
 
 @Service
@@ -56,14 +56,14 @@ public class CrudFilmeService {
 	private void salvarFilme(Scanner scanner) {
 		System.out.println("Por favor, digite o nome do Filme:");
 		String nomeDoFilme = scanner.next();
-		Filme filme = new Filme();		
+		Filme filme = new Filme();
 		filme.setNomeDoFilme(nomeDoFilme);
 		System.out.println("Por favor, digite o valor do filme:");
 		BigDecimal valor = scanner.nextBigDecimal();
 		filme.setValor(valor);
 		System.out.println("Por favor, digite o tipo de midia, VHS ou DVD");
 		String tipoMidia = scanner.next();
-		filme.setTipo(TipoDeMidia.valueOf(tipoMidia));
+		filme.setTipo(TipoDeMidiaEnum.valueOf(tipoMidia));
 		filmeRepository.save(filme);
 		System.out.println("Cliente Cadastrado com sucesso");
 	}
@@ -81,7 +81,7 @@ public class CrudFilmeService {
 		filme.setValor(valor);
 		System.out.println("Por favor, digite o tipo de midia, 1 para VHS, 2 para DVD");
 		String tipoMidia = scanner.next();
-		filme.setTipo(TipoDeMidia.valueOf(tipoMidia));
+		filme.setTipo(TipoDeMidiaEnum.valueOf(tipoMidia));
 		filmeRepository.save(filme);
 		System.out.println("Filme Atualizado com sucesso com sucesso");
 	}

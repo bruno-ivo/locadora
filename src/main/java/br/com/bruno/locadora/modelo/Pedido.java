@@ -1,15 +1,9 @@
 package br.com.bruno.locadora.modelo;
 
-import java.util.ArrayList;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "pedidos")
@@ -20,19 +14,24 @@ public class Pedido {
 	private Long id;
 	
 	@ManyToOne
-	private Cliente cliente;	
-	
+	private Cliente cliente;
 
-	@OneToMany
-	private List<Filme> filmes = new ArrayList<>();
-	
-	public Pedido() {		
+	private Date dataDeLocacao;
+
+	private Date dataDeDevolucao;
+
+	private BigDecimal valorTotal;
+
+	@OneToMany(mappedBy = "pedido", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<ItemPedido> itensDoPedido;
+
+
+	public Long getId() {
+		return id;
 	}
-	
-	public Pedido(Cliente cliente, List<Filme> filmes) {
-		super();
-		this.cliente = cliente;
-		this.filmes = filmes;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Cliente getCliente() {
@@ -43,17 +42,35 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 
-	public List<Filme> getFilmes() {
-		return filmes;
+	public Date getDataDeLocacao() {
+		return dataDeLocacao;
 	}
 
-	public void setFilmes(List<Filme> filmes) {
-		this.filmes = filmes;
+	public void setDataDeLocacao(Date dataDeLocacao) {
+		this.dataDeLocacao = dataDeLocacao;
 	}
-	
-	
-	
-	
-	
 
+	public Date getDataDeDevolucao() {
+		return dataDeDevolucao;
+	}
+
+	public void setDataDeDevolucao(Date dataDeDevolucao) {
+		this.dataDeDevolucao = dataDeDevolucao;
+	}
+
+	public List<ItemPedido> getItensDoPedido() {
+		return itensDoPedido;
+	}
+
+	public void setItensDoPedido(List<ItemPedido> itensDoPedido) {
+		this.itensDoPedido = itensDoPedido;
+	}
+
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
+	}
 }
